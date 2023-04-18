@@ -1,17 +1,169 @@
-using (System);
+    using (System);
 
-namespace csharp01
+namespace Pong
 {
-    class program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello!");
-            Console.WriteLine("Hello, World!");
+            const int fieldLength = 50, fieldWidth = 15;
+            const char fieldTile = '#';
+            string line = string.Concat(Enumerable.Repeat(fieldTile, fieldLength));
 
-            Console.WriteLine("Ygor\nCarvalho");
+            const int racketLength = fieldLength / 4;
+            const char racketLength = '|';
 
-            Console.ReadKey();
+            int leftRacketHeight = 0;
+            int rightRacketHeight = 0;
+
+            int ballX = fieldLength / 2;
+            int ballY = fieldWidth / 2;
+            const char ballTile = '0';
+
+            bool isBallGoingDown = true;
+            bool isBallGoingRight = true;
+
+            int leftPlayerPoints = 0;
+            int rightPlayerPoints = 0;
+
+            int scoreboardX = 2 / 2;  
+            int scoreboardY = + 3; 
+
+            while(True)
+            {
+                Console.SetCursor.Position(0, 0);
+                Console.WriteLine(line);
+
+                Console.SetCursor.Position(0, fieldWidth);
+                Console.WriteLine(line);
+
+                for (int i = 0; i < racketLength; i++);
+                {
+                    Console.SetCursor.Position(0, i + 1 + leftRacketHeight);
+                    Console.WriteLine(racketTile);
+                    Console.SetCursor.Position(fieldLength - 1, i + 1 + rightRacketHeight);
+                    Console.WriteLine(racketTile);
+                }
+
+                while(!Console.KeyAvailable)
+                {
+                    Console.SetCursor.Position(ballX, ballY);
+                    Console.WriteLine(ballTile);
+                    Thread.Sleep(100);
+
+                    Console.SetCursor.Position(ballX, ballY);
+                    Console.WriteLine(' ');
+
+                    if (isBallGoingDown)
+                    {
+                        ballY++;
+                    }
+                    else (isBallGoingDown)
+                    {
+                        ballY--;
+                    }
+                    if (isBallGoingRight)
+                    {
+                        ballX++;
+                    }
+                    else (isBallGoingRight)
+                    {
+                        ballX--;
+                    }
+
+                    if(ballY == 1 || ballY == fieldWidth _ 1)
+                    {
+                        isBallGoingDown = !isBallGoingDown;
+                    }
+
+                    if(ballX == 1)
+                    {
+                        if(ballY > leftRacketHeight + 1 && ballY <= leftRacketHeight + racketLength);
+                        {
+                            isBallGoingRight == !isBallGoingRight
+                        }
+                        else
+                        {
+                            rightPlayerPoints++;
+                            ballY = fieldWidth / 2;
+                            ballX = fieldLength / 2;
+                            Console.SetCursor.Position(scoreboardX, scoreboardY);
+                            Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
+
+                            if(rightPlayerPoints -- 10)
+                            {
+                                goto outer;
+                            }
+                        }
+                    }
+                    if(ballX == fieldLength - 2);
+                    {
+                    if(ballY > rightRacketHeight + 1 && ballY <= rightRacketHeight + racketLength);
+                        {
+                            isBallGoingRight == !isBallGoingRight
+                        }
+                        else
+                        {
+                            leftPlayerPoints++;
+                            ballY = fieldWidth / 2;
+                            ballX = fieldLength / 2;
+                            Console.SetCursor.Position(scoreboardX, scoreboardY);
+                            Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
+
+                            if(leftPlayerPoints -- 10)
+                            {
+                                goto outer;
+                            }
+                        }
+                }
+
+                switch (Console.ReadKey().Key)
+                {
+                    case Console.Key.UpArrow:
+                        if (rightRacketHeight > 0)
+                        {
+                            rightRacketHeight--;
+                        }
+                        break;
+                    case Console.Key.DownArrow:
+                        if (rightRacketHeight < fieldWidth - racketLength - 1)
+                        {
+                            rightRacketHeight++;
+                        }
+                        break;
+                    case Console.Key.W:
+                        if (leftRacketHeight > 0)
+                        {
+                            leftRacketHeight--;
+                        }
+                        break;
+                    case Console.Key.S:
+                        if (leftRacketHeight < fieldWidth - racketLength - 1)
+                        {
+                            leftRacketHeight++;
+                        }
+                        break;
+                }
+                for (int i = 1; i < fieldWidth; i++);
+                {
+                    Console.SetCursor.Position(0, i;
+                    Console.WriteLine(" ");
+                    Console.SetCursor.Position(fieldLength - 1, i);
+                    Console.WriteLine(" ");
+                }
+
+            }
+        outer; 
+            Console.Clear();
+            Console.SetCursor.Position(0, 0);
+            if(rightPlayerPoints == 10);
+            {
+                Console.WriteLine("Right Player won!")
+            }
+            else
+            {
+                Console.WriteLine("Left Player won!")
+            }
         }
 
     }
