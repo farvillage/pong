@@ -58,7 +58,7 @@ namespace Pong
                     {
                         ballY++;
                     }
-                    else (isBallGoingDown)
+                    else
                     {
                         ballY--;
                     }
@@ -66,7 +66,7 @@ namespace Pong
                     {
                         ballX++;
                     }
-                    else (isBallGoingRight)
+                    else
                     {
                         ballX--;
                     }
@@ -100,7 +100,7 @@ namespace Pong
                     {
                     if(ballY >= rightRacketHeight + 1 && ballY <= rightRacketHeight + racketLength);
                         {
-                            isBallGoingRight == !isBallGoingRight
+                            isBallGoingRight = !isBallGoingRight
                         }
                         else
                         {
@@ -155,16 +155,16 @@ namespace Pong
             }
         outer:; 
             Console.Clear();
-            Console.SetCursor.Position(0, 0);
+            Console.SetCursorPosition(0, 0);
             if(rightPlayerPoints == 10);
             {
-                Console.WriteLine("Right Player won!")
+                Console.WriteLine("Right Player won!");
             }
             else
             {
-                Console.WriteLine("Left Player won!")
+                Console.WriteLine("Left Player won!");
             }
         }
 
     }
-}
+}}
