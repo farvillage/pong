@@ -26,32 +26,32 @@ namespace Pong
             int leftPlayerPoints = 0;
             int rightPlayerPoints = 0;
 
-            int scoreboardX = 2 / 2;  
-            int scoreboardY = + 3; 
+            int scoreboardX = fieldLength / 2 - 2;  
+            int scoreboardY = fieldWidth + 3; 
 
-            while(True)
+            while (true)
             {
-                Console.SetCursor.Position(0, 0);
+                Console.SetCursorPosition(0, 0);
                 Console.WriteLine(line);
 
-                Console.SetCursor.Position(0, fieldWidth);
+                Console.SetCursorPosition(0, fieldWidth);
                 Console.WriteLine(line);
 
-                for (int i = 0; i < racketLength; i++);
+                for (int i = 0; i < racketLength; i++)
                 {
-                    Console.SetCursor.Position(0, i + 1 + leftRacketHeight);
+                    Console.SetCursorPosition(0, i + 1 + leftRacketHeight);
                     Console.WriteLine(racketTile);
-                    Console.SetCursor.Position(fieldLength - 1, i + 1 + rightRacketHeight);
+                    Console.SetCursorPosition(fieldLength - 1, i + 1 + rightRacketHeight);
                     Console.WriteLine(racketTile);
                 }
 
-                while(!Console.KeyAvailable)
+                while (!Console.KeyAvailable)
                 {
-                    Console.SetCursor.Position(ballX, ballY);
+                    Console.SetCursorPosition(ballX, ballY);
                     Console.WriteLine(ballTile);
                     Thread.Sleep(100);
 
-                    Console.SetCursor.Position(ballX, ballY);
+                    Console.SetCursorPosition(ballX, ballY);
                     Console.WriteLine(' ');
 
                     if (isBallGoingDown)
@@ -71,26 +71,26 @@ namespace Pong
                         ballX--;
                     }
 
-                    if(ballY == 1 || ballY == fieldWidth _ 1)
+                    if(ballY == 1 || ballY == fieldWidth - 1)
                     {
                         isBallGoingDown = !isBallGoingDown;
                     }
 
                     if(ballX == 1)
                     {
-                        if(ballY > leftRacketHeight + 1 && ballY <= leftRacketHeight + racketLength);
+                        if(ballY >= leftRacketHeight + 1 && ballY <= leftRacketHeight + racketLength)
                         {
-                            isBallGoingRight == !isBallGoingRight
+                            isBallGoingRight = !isBallGoingRight
                         }
                         else
                         {
                             rightPlayerPoints++;
                             ballY = fieldWidth / 2;
                             ballX = fieldLength / 2;
-                            Console.SetCursor.Position(scoreboardX, scoreboardY);
+                            Console.SetCursorPosition(scoreboardX, scoreboardY);
                             Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
 
-                            if(rightPlayerPoints -- 10)
+                            if(rightPlayerPoints == 10)
                             {
                                 goto outer;
                             }
@@ -98,7 +98,7 @@ namespace Pong
                     }
                     if(ballX == fieldLength - 2);
                     {
-                    if(ballY > rightRacketHeight + 1 && ballY <= rightRacketHeight + racketLength);
+                    if(ballY >= rightRacketHeight + 1 && ballY <= rightRacketHeight + racketLength);
                         {
                             isBallGoingRight == !isBallGoingRight
                         }
@@ -107,10 +107,10 @@ namespace Pong
                             leftPlayerPoints++;
                             ballY = fieldWidth / 2;
                             ballX = fieldLength / 2;
-                            Console.SetCursor.Position(scoreboardX, scoreboardY);
+                            Console.SetCursorPosition(scoreboardX, scoreboardY);
                             Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
 
-                            if(leftPlayerPoints -- 10)
+                            if(leftPlayerPoints == 10)
                             {
                                 goto outer;
                             }
@@ -119,25 +119,25 @@ namespace Pong
 
                 switch (Console.ReadKey().Key)
                 {
-                    case Console.Key.UpArrow:
+                    case ConsoleKey.UpArrow:
                         if (rightRacketHeight > 0)
                         {
                             rightRacketHeight--;
                         }
                         break;
-                    case Console.Key.DownArrow:
+                    case ConsoleKey.DownArrow:
                         if (rightRacketHeight < fieldWidth - racketLength - 1)
                         {
                             rightRacketHeight++;
                         }
                         break;
-                    case Console.Key.W:
+                    case ConsoleKey.W:
                         if (leftRacketHeight > 0)
                         {
                             leftRacketHeight--;
                         }
                         break;
-                    case Console.Key.S:
+                    case ConsoleKey.S:
                         if (leftRacketHeight < fieldWidth - racketLength - 1)
                         {
                             leftRacketHeight++;
@@ -146,14 +146,14 @@ namespace Pong
                 }
                 for (int i = 1; i < fieldWidth; i++);
                 {
-                    Console.SetCursor.Position(0, i;
+                    Console.SetCursorPosition(0, i);
                     Console.WriteLine(" ");
-                    Console.SetCursor.Position(fieldLength - 1, i);
+                    Console.SetCursorPosition(fieldLength - 1, i);
                     Console.WriteLine(" ");
                 }
 
             }
-        outer; 
+        outer:; 
             Console.Clear();
             Console.SetCursor.Position(0, 0);
             if(rightPlayerPoints == 10);
