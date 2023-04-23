@@ -1,4 +1,5 @@
-    using System;
+using System;
+using System.Linq;
 
 namespace Pong
 {
@@ -11,7 +12,7 @@ namespace Pong
             string line = string.Concat(Enumerable.Repeat(fieldTile, fieldLength));
 
             const int racketLength = fieldLength / 4;
-            const char racketLength = '|';
+            const char racketTile = '|';
 
             int leftRacketHeight = 0;
             int rightRacketHeight = 0;
@@ -80,7 +81,7 @@ namespace Pong
                     {
                         if(ballY >= leftRacketHeight + 1 && ballY <= leftRacketHeight + racketLength)
                         {
-                            isBallGoingRight = !isBallGoingRight
+                            isBallGoingRight = !isBallGoingRight;
                         }
                         else
                         {
@@ -96,11 +97,11 @@ namespace Pong
                             }
                         }
                     }
-                    if(ballX == fieldLength - 2);
+                    if(ballX == fieldLength - 2)
                     {
-                    if(ballY >= rightRacketHeight + 1 && ballY <= rightRacketHeight + racketLength);
+                    if(ballY >= rightRacketHeight + 1 && ballY <= rightRacketHeight + racketLength)
                         {
-                            isBallGoingRight = !isBallGoingRight
+                            isBallGoingRight = !isBallGoingRight;
                         }
                         else
                         {
@@ -144,7 +145,7 @@ namespace Pong
                         }
                         break;
                 }
-                for (int i = 1; i < fieldWidth; i++);
+                for (int i = 1; i < fieldWidth; i++)
                 {
                     Console.SetCursorPosition(0, i);
                     Console.WriteLine(" ");
@@ -156,7 +157,7 @@ namespace Pong
         outer:; 
             Console.Clear();
             Console.SetCursorPosition(0, 0);
-            if(rightPlayerPoints == 10);
+            if(rightPlayerPoints == 10)
             {
                 Console.WriteLine("Right Player won!");
             }
