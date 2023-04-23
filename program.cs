@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+//import ominoSharp; in Extensions of VSCode
 
 namespace Pong
 {
